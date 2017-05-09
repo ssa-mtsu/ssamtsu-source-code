@@ -1,0 +1,72 @@
+@import url(//fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+body {
+  font-family: 'Droid Arabic Kufi', sans-serif, Tahoma, Arial;
+}
+
+.nav-wrapper {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.section {
+  padding: 30px 0;
+}
+
+.navbar {
+  margin-top: 20px;
+}
+
+footer {
+  padding-bottom: 20px;
+}
+
+
+/* fixing the bootstrap height issue */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .portfolio>.clear:nth-child(4n+4)::before {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@media (min-width: 992px) {
+  .portfolio>.clear:nth-child(3n+3)::before {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+header {
+  background: #B8DBAA;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #B8DBAA 0%, #98C587 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #B8DBAA), color-stop(100%, #98C587));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg, #B8DBAA 0%, #98C587 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg, #B8DBAA 0%, #98C587 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg, #B8DBAA 0%, #98C587 100%);
+  /* IE10+ */
+  background: linear-gradient(-45deg, #B8DBAA 0%, #98C587 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66cdcc, endColorstr=#336799, GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+}
+
+.portfolio-item {
+  margin-bottom: 25px;
+}
+
+footer {
+  margin: 50px 0;
+}
+
+
+/*# sourceMappingURL=main.css.map */

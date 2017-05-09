@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %}{{ article.title|striptags }}{% endblock %} {% block content %}
+<span {% block top_background%}{% if article.photoid %}style="background-image: url({{ SITEURL }}/{{ article.url }}/{{ article.photoid }});no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; box-shadow: inset 0px 0px 0px 100vh rgba(0, 0, 0, 0.6);"
+    {%endif %}{% endblock top_background %}></span>
+
+<div class="container" style="padding-top: 3em;">
+
+    <h2 style="text-align: center; margin-bottom: 1em;">{{ article.title }}</h2>
+     {% if article.content %}
+    <div style="padding-bottom: 20px;">
+    {{ article.content }}
+    </div>
+    {% endif %}
+
+    <div class="portfolio">
+        {% for element in articles %} {% if element.type == article.type %}
+        <div class="col-sm-6 col-xs-12">
+            <div class="leader">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="thumbnail" style="margin-bottom: 0px;">
+                            <img class="img-responsive" src="{{ SITEURL }}/{{ element.url }}/{{ element.photoid }}" alt="{{ element.title }}">
+                        </div>
+                    </div>
+                    <div class="col-xs-8 text-center">
+                        <div>{{ element.title }}</div>
+                        <div>{{ element.name }}</div>
+                        <div style="direction: ltr;"><a href="tel:{{ element.telephone }}">{{ element.telephone }}</a></div>
+                        <div><a href="mailto:{{ element.email }}">{{ element.email }}</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %} {% endfor %}
+    </div>
+</div>
+{% endblock content %} 
+
+{% block head %}
+{{ super() }}
+<style>
+    .leader {background-color: rgba(196, 231, 182, 1); box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.6); border: 9px solid rgba(67, 122, 45, 1); padding: 10px; margin-top: 12px;}
+</style>
+{%endblock %}

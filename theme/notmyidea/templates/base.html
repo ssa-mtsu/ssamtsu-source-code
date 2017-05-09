@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
+
+  {% if FEED_ALL_ATOM %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed"
+  /> {% endif %} {% if FEED_ALL_RSS %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed"
+  /> {% endif %}
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/misc/css/bootstrap.min.css">
+
+  <!-- font Awesome CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+  <!-- Main Styles CSS -->
+  <link href="{{ SITEURL }}/theme/misc/css/main.css" rel="stylesheet">
+
+  <!-- Countdown CSS -->
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/misc/css/countdown.css">
+
+  <!--[if IE]>
+      <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  {% block head %}{%endblock%}
+</head>
+
+<body id="index" class="home">
+  <div id="wrapper">
+
+    <div class="nav-wrapper">
+
+      <div class="container">
+
+        <nav class="navbar navbar-default navbar-inverse" role="navigation">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+              <a class="navbar-brand" style="padding-top: 5px;" href="{{ SITEURL }}/"><img src="{{ SITEURL }}/theme/misc/img/logo%20SSA%20murfreesboro.png" style="height: 40px;"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right" style="    padding-right: 0px;">
+                <li><a href="{{ SITEURL }}">الرئيسية</a></li>
+                <li><a href="{{ SITEURL }}/من_نحن">من نحن</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown">شؤون الطلبة <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ SITEURL }}/students_affairs/leaders">قادة التخصص</a></li>
+                    <li><a href="{{ SITEURL }}/students_affairs/التقويم_الدراسي">التقويم الدراسي</a></li>
+                    <li><a href="{{ SITEURL }}/students_affairs/تقديم_الجامعة">تقديم الجامعة</a></li>
+                    <li><a href="{{ SITEURL }}/forms/القادمون_الجدد">القادمون الجدد</a></li>
+                    <!--<li><a href="{{ SITEURL }}/">معهد اللغة</a></li>-->
+                    <!-- قسّام في اللستة
+                            <li class="divider"></li>
+                            -->
+                  </ul>
+                </li>
+                <!--
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown">الأستديو <span class="caret"></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ SITEURL }}/directory/dcare">صور</a></li>
+                    <li><a href="{{ SITEURL }}/directory/cars">فديو</a></li>
+                  </ul>
+                </li>
+                -->
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown">الدليل <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ SITEURL }}/directory/dcare">حضانات اطفال</a></li>
+                    <li><a href="{{ SITEURL }}/directory/cars">معارض السيارات</a></li>
+                    <li><a href="{{ SITEURL }}/directory/mosques">مساجد</a></li>
+                    <!-- قسّام في اللستة
+                            <li class="divider"></li>
+                            -->
+                    <li><a href="{{ SITEURL }}/directory/entertainment">حدائق ومنتزهات</a></li>
+                    <li><a href="{{ SITEURL }}/directory/driving">رخص قياده</a></li>
+                    <li><a href="{{ SITEURL }}/directory/food">مطاعم ومقاهي</a></li>
+                    <li><a href="{{ SITEURL }}/directory/homes">ســـــكن</a></li>
+                    <li><a href="{{ SITEURL }}/directory/communications">الاتـصالات</a></li>
+                    <li><a href="{{ SITEURL }}/directory/shopping">الأسواق</a></li>
+                    <li><a href="{{ SITEURL }}/directory/transportations">المـواصلات</a></li>
+                    <li><a href="{{ SITEURL }}/directory/hospitals">الصحــــه</a></li>
+                    <li><a href="{{ SITEURL }}/directory/education">تعليم</a></li>
+                    <li><a href="{{ SITEURL }}/directory/travel">السفر الحجوزات</a></li>
+                    <li><a href="{{ SITEURL }}/directory/halal">الذبائح والأكل الحلال</a></li>
+                  </ul>
+                </li>
+                <li><a href="{{ SITEURL }}/ads">الإعلانات</a></li>
+                <li><a href="{{ SITEURL }}/flight_tour">جولة بالطائرة</a></li>
+                <!--<li><a href="{{ SITEURL }}/store">المتجر</a></li>-->
+              </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+
+          </div>
+          <!-- /.container-fluid -->
+        </nav>
+
+      </div>
+
+      <!-- /.container -->
+    </div>
+    <!-- /.nav-wrapper -->
+
+    <header {% block top_background %} {% endblock top_background %}>
+      <div style="max-height: none; overflow: visible; height: 494px;">
+        <a href="{{ SITEURL }}/">
+        <img src="{{ SITEURL }}/theme/misc/img/e90950_8a54e7398ed1467498120441ff0ed1b2.png" style="
+                height: 300px;
+                display: block;
+                margin: 0 auto;
+                transform: translateY(130px);
+            ">
+        </a>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-6 text-center">
+            <ul class="nav navbar-nav" style="float: none; padding: 0;">
+              <div style="padding-bottom: 10px;">
+                <li style="display: inline-block; padding-left: 15px;"><a href="https://twitter.com/ssa_mtsu"><i class="fa fa-twitter color-twitter"></i></a></li>
+                <li style="display: inline-block; padding-left: 15px;"><a href="https://www.facebook.com/ssamtsu"><i class="fa fa-facebook color-facebook"></i></a></li>
+                <li style="display: inline-block; padding-left: 15px;"><a href="http://instagram.com/ssa_mtsu/"><i class="fa fa-instagram color-instagram"></i></a></li>
+                <li style="display: inline-block; padding-left: 15px;"><a href="http://www.youtube.com/channel/UCLWtnP6qUDmEsBc4z2KexDg"><i class="fa fa-youtube color-youtube"></i></a></li>
+                <li style="display: inline-block; padding-left: 15px;"><a href="{{ SITEURL }}/snapchat"><i class="fa fa-snapchat color-snapchat"></i></a></li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-3"></div>
+
+      </div>
+
+
+    </header>
+
+
+    <div class="container">
+      {% block content %} {% endblock %}
+
+      <!-- footer -->
+      <footer>
+        <hr>
+        <div class="copy-rights clearfix">
+          <div class="pull-right">
+            جميع الحقوق محفوظة لأصحابها
+          </div>
+          <div class="pull-left">
+            نعمل بواسطة <a href="https://blog.getpelican.com/">pelican</a> و <a href="https://github.com/ssa-mtsu/ssa-mtsu">github</a> | تطوير <a href="https://github.com/bomkarram">bomkarram</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- /.container -->
+
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- jQuery -->
+  <script src="{{ SITEURL }}/theme/misc/js/jquery-1.11.1.min.js"></script>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="{{ SITEURL }}/theme/misc/js/bootstrap.min.js"></script>
+
+  {% block head_script %} {% endblock head_script %}
+</body>
+
+</html>

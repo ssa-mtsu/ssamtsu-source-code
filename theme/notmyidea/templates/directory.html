@@ -1,0 +1,110 @@
+{% extends "base.html" %} {% block title %}{{ article.title|striptags }}{% endblock %} {% block content %}
+<span {% block top_background%}{% if article.photoid %}style="background-image: url({{ SITEURL }}/{{ article.url }}/{{ article.photoid }});no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; box-shadow: inset 0px 0px 0px 100vh rgba(0, 0, 0, 0.6);"
+    {%endif %}{% endblock top_background %}></span>
+
+<div class="container" style="padding-top: 3em;">
+    {% if article.type != "ads" %}
+    <div class="row">
+        <div class="col-sm-4 col-xs-12" style="margin: 14px 0;"><a href="{{ SITEURL }}/{{ article.url | go_parent }}"><i class="fa fa-chevron-right color-chevron-right"></i> رجوع</a></div>
+        <div class="col-sm-4 col-xs-12">
+            <a role="button" href="{{ SITEURL }}/forms/أضف_إلى_الدليل"
+                class="btn btn-large btn-block btn-primary">
+                <i class="glyphicon glyphicon-plus"></i> إضف إلى الدليل</a>
+        </div>
+        <div class="col-sm-4 col-xs-12"></div>
+    </div>
+    {% endif %} {% if article.type == "ads" %}
+    <div class="row">
+        <div class="col-sm-4 col-xs-12" style="margin: 14px 0;"><a href="{{ SITEURL }}/{{ article.url | go_parent }}"><i class="fa fa-chevron-right color-chevron-right"></i> رجوع</a></div>
+        <div class="col-sm-4 col-xs-12">
+            <a role="button" href="{{ SITEURL }}/forms/أضف_اعلانك"
+                class="btn btn-large btn-block btn-primary">
+                <i class="glyphicon glyphicon-plus"></i> أعلن معنا</a>
+        </div>
+        <div class="col-sm-4 col-xs-12"></div>
+    </div>
+    {% endif %}
+
+    <h2 style="text-align: center; margin-bottom: 1em;">{{ article.title }}</h2>
+     {% if article.content %}
+    <div style="padding-bottom: 20px;">
+    {{ article.content }}
+    </div>
+    {% endif %}
+
+    <div class="portfolio">
+        {% for element in articles %} {% if element.type == article.type %}
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="panel panel-success">
+                <div class="panel-body" style="background-color: #F4FAF2;">
+                    <h3 class="text-center">{{ element.title }}</h3>
+
+                </div>
+                <div class="panel-footer">
+                    {% if element.photoid %}
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="{{ SITEURL }}/{{ element.url }}/{{ element.photoid }}" alt="{{ element.title }}">
+                    </div>
+                    {% endif %}
+                    <table class="table">
+                        <tbody>
+                            {% if element.name %}
+                            <tr>
+                                <td style="border-top: none;"><b>الإسم</b></td>
+                                <td style="text-align: center; border-top: none; direction: ltr;">{{ element.name }}</td>
+                            </tr>
+                            {% endif %}{% if element.address %}
+                            <tr>
+                                <td style="border-top: none;"><b>العنوان</b></td>
+                                <td style="text-align: left; border-top: none; direction: ltr;"><a href="http://maps.google.com/?q={{ element.address }}">{{ element.address }}</a></td>
+                            </tr>
+                            {% endif %}{% if element.telephone %}
+                            <tr>
+                                <td><b>رقم الهاتف</b></td>
+                                <td style="text-align: center; direction: ltr;"><a href="tel:+1{{ element.telephone }}"> {{ element.telephone }}</a>{% if element.telemore
+                                    %} | {{ element.telemore}} {% endif %} </td>
+                            </tr>
+                            {% endif %}{% if element.email %}
+                            <tr>
+                                <td><b>البريد الإلكتروني</b></td>
+                                <td style="text-align: center; direction: ltr;"><a href="mailto:{{ element.email }}">إضغط هنا</a></td>
+                            </tr>
+                            {% endif %}{% if element.website %}
+                            <tr>
+                                <td><b>الموقع الإلكتروني</b></td>
+                                <td style="text-align: center; direction: ltr;"><a href="{{ element.website }}">إضغط هنا</a></td>
+                            </tr>
+                            {% endif %}{% if element.price %}
+                            <tr>
+                                <td><b>السعر</b></td>
+                                <td style="text-align: center; direction: ltr;">${{ element.price }}</td>
+                            </tr>
+                            {% endif %}{% if element.content %}
+                            <tr>
+                                <td><b>نبذة</b></td>
+                                <td style="text-align: right;">{{ element.content }}</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                {% if element.save_as and element.template == "comments" %}
+                <a class="list-group-item list-group-item-success" role="button" href="{{ SITEURL }}/{{ element.url }}">
+                    <i class="glyphicon glyphicon-comment"></i>
+                    <span class="disqus-comment-count" data-disqus-url="{{ SITEURL }}/{{ element.url }}#disqus_thread">أضف تعليقك</span>
+                </a>
+                {% endif %} {% if element.save_as and element.photoslist and element.template == "photos" %}
+                <a class="list-group-item list-group-item-success" role="button" href="{{ SITEURL }}/{{ element.url }}">
+                    <i class="fa fa-picture-o color-picture-o"></i> صور أخرى
+                </a>
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="clear"></div>
+        {% endif %} {% endfor %}
+    </div>
+</div>
+{% endblock content %} {% block head_script %}
+<script id="dsq-count-scr" src="//{{ DISQUS_SITENAME }}.disqus.com/count.js" async></script>
+{% endblock head_script %}

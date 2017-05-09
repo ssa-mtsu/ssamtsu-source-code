@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}{{ article.title|striptags }}{% endblock %} {% block content %}
+
+<span {% block top_background%}{% if article.photoid %}style="background-image: url('{{ SITEURL }}/{{ article.url }}/{{article.photoid }}');no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; box-shadow: inset 0px 0px 0px 100vh rgba(0, 0, 0, 0.6);" {%endif %}{% endblock top_background %}></span>
+
+<div class="row jumbotron">
+    <div style="margin: 14px 0;"><a href="{{ SITEURL }}/{{ article.url | go_parent }}"><i class="fa fa-chevron-right color-chevron-right"></i> رجوع</a></div>
+    <h2>صور {{ article.title }}</h2>
+    <hr>
+    <br>
+    <div class="portfolio">
+        {% if article.photoslist %} {% for photo in article.photoslist.split(',') %}
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <a class="thumbnail" href="{{ SITEURL }}/{{ article.url }}/{{ photo }}">
+                <img class="img-responsive" src="{{ SITEURL }}/{{ article.url }}/{{ photo }}" alt="">
+            </a>
+        </div>
+        <div class="clear"></div>
+        {% endfor %} {% endif %}
+    </div>
+</div>
+{% endblock content %}

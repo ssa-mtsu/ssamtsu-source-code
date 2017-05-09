@@ -1,0 +1,116 @@
+{% extends "base.html" %} {% block content_title %}{% endblock %} {% block content %}
+<div class="row">
+	<div class="col-sm-6">
+		<!-- Countdown Clock -->
+		<div class="text-center">
+			<a href="https://elearn.mtsu.edu/d2l/home">D2L</a> | <a href="https://lum4prod.mtsu.edu/cp/home/displaylogin">PIPELINE</a>
+		</div>
+		<h2 style="text-align: center;">موعد نزول الرواتب
+			<h2>
+				<div id="clockdiv">
+					<div>
+						<span class="days"></span>
+						<div class="smalltext">أيام</div>
+					</div>
+					<div>
+						<span class="hours"></span>
+						<div class="smalltext">ساعات</div>
+					</div>
+					<div>
+						<span class="minutes"></span>
+						<div class="smalltext">دقائق</div>
+					</div>
+					<div>
+						<span class="seconds"></span>
+						<div class="smalltext">ثواني</div>
+					</div>
+				</div>
+	</div>
+	<div class="col-sm-6 text-center" style="padding-top: 2em;">
+		<h2 style="text-align: center;">روابط مهمة
+			<h2>
+				<a href="{{ SITEURL }}/forms/سجل_معنا"><button type="submit" class="btn btn-default" style="padding: 6px 13px; font-size: 20px; text-align: left; margin-top: 10px;">
+					<i class="fa fa-user color-user"></i>
+					سجل معنا</button></a>
+
+				<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9X5YEUF29G98S"><button type="submit" class="btn btn-default" style="padding: 6px 32px; font-size: 20px; text-align: left; margin-top: 10px;">
+					<i class="fa fa-usd color-usd"></i>
+					إدعمنا</button></a>
+				<a href="{{ SITEURL }}/forms/اتصل_بنا"><button type="button" class="btn btn-primary" style="padding: 6px 32px; font-size: 20px; text-align: left; margin-top: 10px;">
+					<i class="fa fa-phone-square color-phone-square"></i>
+					تواصل معنا</button></a>
+	</div>
+</div>
+
+<div class="container" style="padding-top: 3em;">
+	<h2 style="text-align: center;">عروض خاصة</h2>
+
+	<div class="portfolio">
+		{% for article in articles %} {% if article.type == "offers"%}
+		<div class="col-md-4 col-sm-6 col-xs-12">
+			<div class="panel panel-success">
+				<div class="panel-body" style="background-color: #F4FAF2;">
+					<h3 class="text-center">{{ article.title }}</h3>
+
+				</div>
+				<div class="panel-footer">
+					<div class="thumbnail">
+						<img class="img-responsive" src="{{ SITEURL }}/{{ article.url }}/{{ article.photoid }}" alt="{{ article.title }}">
+					</div>
+					<table class="table">
+						<tbody>
+							{% if article.address %}
+							<tr>
+								<td style="border-top: none;"><b>العنوان</b></td>
+								<td style="text-align: left; border-top: none; direction: ltr;"><a href="http://maps.google.com/?q={{ article.address }}">{{ article.address }}</a></td>
+							</tr>
+							{% endif %}{% if article.telephone %}
+							<tr>
+								<td><b>رقم الهاتف</b></td>
+								<td style="text-align: center; direction: ltr;"><a href="tel:+1{{ article.telephone }}">{{ article.telephone }}</a></td>
+							</tr>
+							{% endif %}{% if article.content %}
+							<tr>
+								<td><b>نبذة</b></td>
+								<td style="text-align: right;">{{ article.content }}</td>
+							</tr>
+							{% endif %}
+						</tbody>
+					</table>
+				</div>
+				{% if article.save_as %}
+				<a class="list-group-item list-group-item-success" role="button" href="{{ SITEURL }}/{{ article.url }}">
+					<i class="fa fa-picture-o color-picture-o"></i> صور أخرى
+				</a>
+				{% endif %}
+			</div>
+
+		</div>
+		<div class="clear"></div>
+		{% endif %} {% endfor %}
+	</div>
+
+</div>
+{% endblock content %} {% block head_script %}
+<!-- Countown.Jquery -->
+<script src="{{ SITEURL }}/theme/misc/js/jquery.countdown.min.js"></script>
+<script>
+	var date = '2017/05/19';
+	$('.days').countdown(date, function (event) {
+		var $this = $(this).html(event.strftime('' +
+			'%n'));
+	});
+	$('.hours').countdown(date, function (event) {
+		var $this = $(this).html(event.strftime('' +
+			'%H'));
+	});
+	$('.minutes').countdown(date, function (event) {
+		var $this = $(this).html(event.strftime('' +
+			'%M'));
+	});
+	$('.seconds').countdown(date, function (event) {
+		var $this = $(this).html(event.strftime('' +
+			'%S'));
+	});
+</script>
+{% endblock head_script %}
