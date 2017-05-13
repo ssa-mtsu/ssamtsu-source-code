@@ -3,7 +3,7 @@
     {%endif %}{% endblock top_background %}></span>
 
 <div class="container" style="padding-top: 3em;">
-    {% if article.type != "ads" %}
+    {% if article.url | go_parent == "directory" %}
     <div class="row">
         <div class="col-sm-4 col-xs-12" style="margin: 14px 0;"><a href="{{ SITEURL }}/{{ article.url | go_parent }}"><i class="fa fa-chevron-right color-chevron-right"></i> رجوع</a></div>
         <div class="col-sm-4 col-xs-12">
@@ -34,7 +34,7 @@
 
     <div class="portfolio">
         {% for element in articles %} {% if element.type == article.type %}
-        <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="col-xs-12	col-sm-12	col-md-6	col-lg-4">
             <div class="panel panel-success">
                 <div class="panel-body" style="background-color: #F4FAF2;">
                     <h3 class="text-center">{{ element.title }}</h3>
@@ -57,6 +57,11 @@
                             <tr>
                                 <td style="border-top: none;"><b>العنوان</b></td>
                                 <td style="text-align: left; border-top: none; direction: ltr;"><a href="http://maps.google.com/?q={{ element.address }}">{{ element.address }}</a></td>
+                            </tr>
+                            {% endif %}{% if element.date and element.type == "studio" %}
+                            <tr>
+                                <td style="{% if not element.address %}border-top: none;{% endif %}"><b>التاريخ</b></td>
+                                <td style="text-align: center;{% if not element.address %}border-top: none;{% endif %}">{{ element.date|strftime('%-m/%-d/%Y') }}</td>
                             </tr>
                             {% endif %}{% if element.telephone %}
                             <tr>
@@ -87,6 +92,32 @@
                             {% endif %}
                         </tbody>
                     </table>
+
+                    {% if element.type == "studio" %}
+                    {% for med in element.media.split('^') %}
+                        {% set dat = med.split(',') %}
+                        <a href="{{ dat[2] }}" type="button" class="btn btn-large btn-block btn-info">
+
+                            {% if dat[0] == 'البوم' %}
+                            <i class="fa fa-camera color-camera"></i>
+                            {{dat[1]}}
+                            {% if dat[1] == ''%}
+                            البوم
+                            {% endif%}
+                            {% endif %}
+
+                            {% if dat[0] == 'فديو' %}
+                            <i class="fa fa-video-camera color-video-camera"></i>
+                            {{dat[1]}}
+                            {% if dat[1] == ''%}
+                            فديو
+                            {% endif%}
+                            {% endif %}
+
+                        </a>
+                    {% endfor %}
+                    {% endif %}                    
+
                 </div>
                 {% if element.save_as and element.template == "comments" %}
                 <a class="list-group-item list-group-item-success" role="button" href="{{ SITEURL }}/{{ element.url }}">

@@ -25,7 +25,7 @@ footer {
 
 /* fixing the bootstrap height issue */
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .portfolio>.clear:nth-child(4n+4)::before {
     content: '';
     display: table;
@@ -33,7 +33,7 @@ footer {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .portfolio>.clear:nth-child(3n+3)::before {
     content: '';
     display: table;
