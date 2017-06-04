@@ -1,5 +1,5 @@
 Title:          كنبه  
-Date:           2017-05-01
+Date:           2017-06-01
 Type:           ads
 url:            classifieds/كنبه 
 save_as:        classifieds/كنبه/index.html
