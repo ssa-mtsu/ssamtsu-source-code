@@ -1,5 +1,5 @@
 Title:          أثاث شقة متكامل 
-Date:           2017-07-03
+Date:           2017-07-21
 Type:           ads
 url:            classifieds/أثاث_شقة_متكامل
 save_as:        classifieds/أثاث_شقة_متكامل/index.html
