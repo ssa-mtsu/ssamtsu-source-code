@@ -7,20 +7,15 @@ PhotoId:        admission.png
 
 <div class="row">
 
-<div class="col-md-3 col-sm-6 col-xs-12 text-center" style="padding: 1em;">
-    <a class="btn btn-large btn-block btn-info" href="/القادمون_الجدد">القادمون الجدد</a>
-
-</div>
-
-<div class="col-md-3 col-sm-6 col-xs-12 text-center" style="padding: 1em;">
+<div class="col-md-4 col-sm-6 col-xs-12 text-center" style="padding: 1em;">
     <a class="btn btn-large btn-block btn-default" href="https://ru.moe.gov.sa/Search#/University/6821">التخصصات الموصى بها</a>
 
 </div>
-<div class="col-md-3 col-sm-6 col-xs-12 text-center" style="padding: 1em;">
-    <a class="btn btn-large btn-block btn-default" href="/students_affairs/التقويم_الدراسي">التقويم الدراسي</a>
+<div class="col-md-4 col-sm-6 col-xs-12 text-center" style="padding: 1em;">
+    <a class="btn btn-large btn-block btn-default" href="/التقويم-الدراسي">التقويم الدراسي</a>
 
 </div>
-<div class="col-md-3 col-sm-6 col-xs-12 text-center" style="padding: 1em;">
+<div class="col-md-4 col-sm-12 col-xs-12 text-center" style="padding: 1em;">
     <a class="btn btn-large btn-block btn-info" href="https://ssb.mtsu.edu/pls/PROD/bwskalog.P_DispLoginNon">MTSU Online Application</a>
 </div>
 </div>
